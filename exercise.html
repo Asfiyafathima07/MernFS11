@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save and Load User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #4a148c;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background-color: #4caf50;
+        }
+
+        .load-btn {
+            background-color: #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Info Storage</h1>
+    <div class="container">
+        <input type="text" id="name" placeholder="Enter your name">
+        <br>
+        <input type="number" id="age" placeholder="Enter your age">
+        <br>
+        <button class="save-btn" onclick="saveData()">Save</button>
+        <button class="load-btn" onclick="loadData()">Load</button>
+    </div>
+
+    <script>
+        function saveData() {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+
+            localStorage.setItem("userName", name);
+            localStorage.setItem("userAge", age);
+
+            alert("Data saved to localStorage!");
+        }
+
+        function loadData() {
+            const name = localStorage.getItem("userName");
+            const age = localStorage.getItem("userAge");
+
+            document.getElementById("name").value = name || "";
+            document.getElementById("age").value = age || "";
+
+            alert("Data loaded from localStorage!");
+        }
+    </script>
+</body>
+</html>
