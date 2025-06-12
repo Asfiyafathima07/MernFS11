@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date and Time Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #datetime {
+            font-size: 18px;
+            background-color: lightblue;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+        button {
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="datetime">Date and Time will appear here</div><br>
+    <button onclick="startTime()">Click me</button>
+    <button onclick="stopTime()">stop</button>
+    <script>
+        let intervalId;
+        function startTime() {
+            if (intervalId) return; // prevent multiple intervals
+            intervalId = setInterval(() => {
+                const now = new Date();
+                document.getElementById("datetime").textContent = now.toString();
+            }, 1000);
+        }
+        function stopTime() {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    </script>
+</body>
+</html>
